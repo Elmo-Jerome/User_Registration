@@ -1,4 +1,15 @@
 .App {
-  text-align: center;
+ margin: 20px auto 0 auto;
+ width: 80%;
+ padding: 20px;
+ background-color: aqua;
+ border-radius: 5px;
 }
 
+.App label {
+    margin-top: 20px;
+}
+
+.App button {
+    margin-top: 30px;
+}
