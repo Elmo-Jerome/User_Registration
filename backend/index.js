@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mongoose = require('mongoose');
 const usersModel = require("./models/users");
+
+app.use(cors());
+app.use(express.json());
 
 // dbs connection
 mongoose.connect(
@@ -9,15 +13,20 @@ mongoose.connect(
     { useNewUrlParser: true }
 );
 
-app.get('/insert', async (req, res) => {
-    const users = new usersModel({name: "elmo", email: "elmo@test.com", company: "PUP", role: "student"});
+app.post('/user-register', async (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const company = req.body.company;
+    const role = req.body.role;
+
+    const users = new usersModel({name: name, email: email, company: company, role: role});
     await users.save();
-    res.send('data inserted!');
+    res.send('Registered successfully!');
 });
 
 app.get('/read', async (req, res) => {
     usersModel.find({}, (err, result) => {
-        if(err){
+        if (err) {
             res.send(err);
         } else {
             res.send(result);
