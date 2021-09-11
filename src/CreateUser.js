@@ -19,7 +19,7 @@ export const CreateUser = () => {
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label htmlFor="fullName">Full Name:</label>
-                        <input className="form-control" {...register('fullName', { required: true })} type="text" name="fullName" id="fullName"></input>
+                        <input className="form-control" {...register('fullName', { required: true })} type="text" id="fullName"></input>
                     </div>
                     <div className="form-group mt-3">
                         <button type="submit" className="btn btn-primary">Register</button>
