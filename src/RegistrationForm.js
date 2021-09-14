@@ -59,7 +59,7 @@ export const RegistrationForm = () => {
                     name="company"
                     id="company"
                     placeholder="Enter your Company name..."
-                    required
+                    required="true"
                     onChange={(event) => {
                         setCompany(event.target.value);
                     }}
