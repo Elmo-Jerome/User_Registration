@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Axios from "axios";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 
@@ -11,7 +12,7 @@ export const RegistrationForm = () => {
 
 
     const newUser = () => {
-        Axios.post('http://localhost:3001/adduser', { 
+        axios.post('http://localhost:3001/adduser', { 
             name: name, 
             email: email, 
             company: company, 
@@ -26,7 +27,7 @@ export const RegistrationForm = () => {
 
     return (
         <form>
-            <div className="form-group">
+            <div className="form-group m-5">
                 <label htmlFor="name">Name:</label>
                 <input
                     className="form-control"
@@ -34,6 +35,7 @@ export const RegistrationForm = () => {
                     name="name"
                     id="name"
                     placeholder="Enter your full name..."
+                    required
                     onChange={(event) => {
                         setName(event.target.value);
                     }}
@@ -45,6 +47,7 @@ export const RegistrationForm = () => {
                     name="email"
                     id="email"
                     placeholder="Enter your valid email..."
+                    required
                     onChange={(event) => {
                         setEmail(event.target.value);
                     }}
@@ -56,6 +59,7 @@ export const RegistrationForm = () => {
                     name="company"
                     id="company"
                     placeholder="Enter your Company name..."
+                    required
                     onChange={(event) => {
                         setCompany(event.target.value);
                     }}
@@ -67,14 +71,15 @@ export const RegistrationForm = () => {
                     name="role"
                     id="role"
                     placeholder="Enter your company role..."
+                    required
                     onChange={(event) => {
                         setRole(event.target.value);
                     }}
                 />
             </div>
-            <div className="form-group mt-4">
-                <button type="submit" className="btn btn-primary" onClick={newUser}>
-                    Register
+            <div className="form-group">
+                <button type="submit" className="btn " onClick={newUser}>
+                    <Link to="./UserList" className="btn btn-primary" >Register</Link>
                 </button>
             </div>
         </form>

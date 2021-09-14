@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const validator = require('validator');
 const UserInfoModel = require('./models/UserInfo');
 
 app.use(cors());
@@ -33,7 +32,7 @@ app.post("/adduser",async (req, res) =>{
     res.send("User added");
 })
 
-app.get("/UserList",async (req, res) =>{
+app.get("/userlist",async (req, res) =>{
     UserInfoModel.find({}, (err, result) => {
         if(err){
             res.send(err);
